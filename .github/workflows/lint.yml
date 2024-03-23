@@ -1,0 +1,7 @@
+name: Lint
+
+on: [push]
+
+jobs:
+  lint-python:
+    uses: UglyGallery/.github/.github/workflows/lint-python.yml@main
