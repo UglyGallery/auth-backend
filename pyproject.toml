@@ -1,0 +1,44 @@
+[project]
+name = "Ugly Gallery auth-backend"
+requires-python = ">=3.12"
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.0"
+SQLAlchemy = "^2.0.28"
+alembic = "^1.13.1"
+pydantic = {extras = ["email"], version = "^2.6.4"}
+pydantic-settings = "^2.2.1"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.9.0"
+ruff = "^0.3.3"
+pre-commit = "^3.6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "TD003", # missing-to-do-link
+    "TD002", # missing-to-do-author
+    "FIX002", # line-contains-to-do
+    "RUF003", # ambiguous-unicode-character-comment
+    "RUF002", # ambiguous-unicode-character-docstring
+    "D105", # undocumented-magic-method
+    "ANN101", # missing-type-self
+    "D203", # one-blank-line-before-class
+    "D213", # multi-line-summary-second-line
+    "ERA001", # commented-out-code
+    "D100", # undocumented-public-module
+    "ISC001", # single-line-implicit-string-concatenation
+    "COM812", # missing-trailing-comma
+]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
